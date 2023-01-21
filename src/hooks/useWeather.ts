@@ -1,46 +1,36 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
+import axios from 'axios';
 import { IGeoCoding } from 'interfaces/IGeoCoding';
 import { ICityWeatherDetails } from 'interfaces/IWeatherDetails';
 import { useMemo } from 'react';
 import { createUrl } from 'utils/fetch';
 import { useFetch } from './useFetch';
+import { useAppSelector } from './useStore';
 
-export const useGeocoding = (city: string) => {
-  const url = useMemo<string>(() => {
-    const queryString = {
-      q: city.toLowerCase(),
-      limit: 5,
-      appid: process.env.REACT_APP_WEATHER_APP_ID,
-    };
-
-    return createUrl(
-      process.env.REACT_APP_REMOTE_API_URL ?? '',
-      ['geo', '1.0', 'direct'],
-      queryString
+export const getGeoLocation = async (searchKeyWord: string) => {
+  try {
+    const { data } = await axios.get(
+      `${
+        process.env.REACT_APP_REMOTE_API_URL
+      }/geo/1.0/direct?q=${searchKeyWord.toLowerCase()}&limit=5&appid=${
+        process.env.REACT_APP_WEATHER_APP_ID
+      }`
     );
-  }, []);
 
-  return useFetch<IGeoCoding[]>({
-    key: ['geocoding'],
-    url,
-    format: (data) =>
-      data?.filter((item: IGeoCoding) => item?.state?.toLowerCase() === city) ??
-      [],
-  });
+    return data;
+  } catch (error) {
+    return [];
+  }
 };
 
-export const useWeather = (
-  lat: number | undefined,
-  lon: number | undefined
-) => {
+export const useWeather = () => {
+  const { selectedCity, unit } = useAppSelector(({ weather }) => weather);
+
   const url = useMemo<string>(() => {
     const queryString = {
-      lat: lat,
-      lon: lon,
+      lat: selectedCity?.lat,
+      lon: selectedCity?.lon,
       appid: process.env.REACT_APP_WEATHER_APP_ID,
-      units: 'metric',
+      units: unit,
     };
 
     return createUrl(
@@ -48,13 +38,13 @@ export const useWeather = (
       ['data', '2.5', 'forecast'],
       queryString
     );
-  }, [lat, lon]);
+  }, [selectedCity?.lat, selectedCity?.lon, unit]);
 
   return useFetch<ICityWeatherDetails>({
     key: ['weather'],
     url,
     options: {
-      enabled: !!lat || !!lon,
+      enabled: !!selectedCity,
     },
   });
 };
