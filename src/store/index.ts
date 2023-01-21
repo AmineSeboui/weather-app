@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/indent */
 import { configureStore } from '@reduxjs/toolkit';
+import weather from './weatherSlice';
 
 export const store = configureStore({
-  reducer: {},
+  reducer: { weather: weather },
 });
 
 export type AppDispatch = typeof store.dispatch;

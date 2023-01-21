@@ -5,6 +5,25 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-image: linear-gradient(
+    to bottom,
+    #00427e,
+    #1b4e88,
+    #2d5992,
+    #3c669c,
+    #4a72a6,
+    #527cad,
+    #5b87b5,
+    #6591bc,
+    #6d9cc3,
+    #75a7c9,
+    #7fb1d0,
+    #8abcd6
+  );
 }
 
 code {

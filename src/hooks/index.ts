@@ -1,5 +1,5 @@
-export { useFetch } from "./useFetch";
+export { useFetch } from './useFetch';
 
-export { useAppSelector, useAppDispatch } from "./useStore";
+export { useAppSelector, useAppDispatch } from './useStore';
 
-export { useWeather, useGeocoding } from "./useWeather";
+export { useWeather, getGeoLocation } from './useWeather';
