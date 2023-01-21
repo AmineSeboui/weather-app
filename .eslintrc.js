@@ -1,27 +1,52 @@
 module.exports = {
   env: {
     browser: true,
-    es2021: true
+    es2021: true,
+    node: true,
   },
   extends: [
-    'plugin:react/recommended',
-    'standard-with-typescript'
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:prettier/recommended",
   ],
-  overrides: [
-  ],
+  parser: "@typescript-eslint/parser",
   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module'
+    ecmaFeatures: {
+      jsx: true,
+    },
+    ecmaVersion: 12,
+    sourceType: "module",
   },
-  plugins: [
-    'react',
-    "react-hooks"
-  ],
+  plugins: ["react", "@typescript-eslint", "react-hooks", "prettier"],
   rules: {
-    'react/react-in-jsx-scope': 'off',
-    'react/prop-types': 0,
-    'quotes': ['warn', 'single'],
-    "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
-    "react-hooks/exhaustive-deps": "warn" // Checks effect dependencies
-  }
-}
+    // suppress errors for missing 'import React' in files
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-filename-extension": [
+      1,
+      { extensions: [".js", ".jsx", ".tsx", ".ts"] },
+    ],
+    "react/prop-types": 0,
+
+    "prettier/prettier": "error",
+    quotes: ["warn", "single"],
+  },
+  overrides: [
+    {
+      files: ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"],
+      extends: ["plugin:testing-library/react"],
+    },
+  ],
+  ignorePatterns: ["build", "node-module", "amplify"],
+  settings: {
+    react: {
+      version: "detect",
+    },
+    "import/resolver": {
+      node: {
+        paths: ["src"],
+      },
+    },
+  },
+};
