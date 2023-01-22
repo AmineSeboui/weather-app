@@ -1,5 +1,5 @@
 export interface IWeather {
-  description: number;
+  description: string;
   main: string;
   icon: string;
   id: number;
@@ -29,6 +29,11 @@ export interface IList {
     gust: number;
     speed: number;
   };
+  /* custom attributs*/
+  iconDescription?: number;
+  date: string;
+  icon?: string;
+  avg_temp?: number;
 }
 
 export interface ICityWeatherDetails {
@@ -39,6 +44,8 @@ export interface ICityWeatherDetails {
     sunrise: number;
     sunset: number;
     timezone: number;
+    population: number;
   };
   list: IList[];
+  groupedList?: Array<IList[]>;
 }

@@ -10,8 +10,8 @@ const initialState: IWeather = {
   selectedCity: {
     country: 'TN',
     name: 'tunis',
-    lat: 0,
-    lon: 0,
+    lat: 36.8002,
+    lon: 10.1858,
     state: '',
   },
   unit: 'metric',

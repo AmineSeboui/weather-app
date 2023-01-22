@@ -1,8 +1,6 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'DM Sans';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-background-size: cover;
@@ -10,23 +8,37 @@ body {
   -o-background-size: cover;
   background-size: cover;
   background-image: linear-gradient(
-    to bottom,
-    #00427e,
-    #1b4e88,
-    #2d5992,
-    #3c669c,
-    #4a72a6,
-    #527cad,
-    #5b87b5,
-    #6591bc,
-    #6d9cc3,
-    #75a7c9,
-    #7fb1d0,
-    #8abcd6
+    to right top,
+    #ffffff,
+    #fcfcff,
+    #f9f9ff,
+    #f5f7ff,
+    #f0f4ff,
+    #e9f0ff,
+    #e2ebfe,
+    #dae7fe,
+    #cfdffd,
+    #c3d7fc,
+    #b8cffa,
+    #adc7f9
   );
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  src: local('DMSans-Bold'),
+    url('./assets/fonts/primary/DMSans-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  src: local('DMSans-Medium'),
+    url('./assets/fonts/primary/DMSans-Medium.ttf') format('truetype');
+  font-weight: normal;
 }
