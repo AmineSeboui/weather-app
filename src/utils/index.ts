@@ -6,3 +6,4 @@ export {
   post,
   put,
 } from './fetch';
+export { toHours } from './numbers';
