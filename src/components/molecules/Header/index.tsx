@@ -5,13 +5,12 @@ import {
   FormLabel,
   Grid,
   Icon,
-  makeStyles,
   Radio,
   RadioGroup,
   styled,
 } from '@mui/material';
 import { format } from 'date-fns';
-import { useWeather } from 'hooks';
+import { getWeather, useAppSelector } from 'hooks';
 import { FC, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setUnitValue } from 'store/weatherSlice';
@@ -23,6 +22,7 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import { toHours } from 'utils';
 import _ from 'lodash';
+import { useQuery } from 'react-query';
 
 const CurrentHour = styled(FormLabel)({
   color: 'white !important',
@@ -78,7 +78,13 @@ const Header: FC = () => {
 
   const [selectedValue, setSelectedValue] = useState<string>('metric');
 
-  const { data: cityWeatherDetails, isFetching, refetch } = useWeather();
+  const { selectedCity, unit } = useAppSelector(({ weather }) => weather);
+
+  const { data: cityWeatherDetails } = useQuery(
+    'getWeather',
+    () => getWeather(selectedCity.lat, selectedCity.lon, unit),
+    { refetchOnWindowFocus: false }
+  );
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setSelectedValue(event.target.value);

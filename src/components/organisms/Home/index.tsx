@@ -1,25 +1,26 @@
-import {
-  Box,
-  Card,
-  CardContent,
-  CircularProgress,
-  Grid,
-  Typography,
-} from '@mui/material';
-import { CardsFeed, SearchComponent, Header } from 'components/molecules';
-import { useAppSelector, useWeather } from 'hooks';
-import { IList } from 'interfaces/IWeatherDetails';
+import { Box, CircularProgress, Grid } from '@mui/material';
+import { CardsFeed, Header } from 'components/molecules';
+import { getWeather, useAppSelector } from 'hooks';
 import { FC, useEffect } from 'react';
 import { ChartCard } from 'components/molecules';
+import { useQuery } from 'react-query';
 
 const Home: FC = () => {
   const { selectedCity, unit } = useAppSelector(({ weather }) => weather);
 
-  const { data: cityWeatherDetails, isFetching, refetch } = useWeather();
+  const {
+    data: cityWeatherDetails,
+    isFetching,
+    refetch,
+  } = useQuery(
+    'getWeather',
+    () => getWeather(selectedCity.lat, selectedCity.lon, unit),
+    { refetchOnWindowFocus: false }
+  );
 
   useEffect(() => {
     refetch();
-  }, [selectedCity, unit]);
+  }, [selectedCity, unit, refetch]);
 
   return (
     <Grid container spacing={2} direction={'column'}>
