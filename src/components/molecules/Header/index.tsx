@@ -22,29 +22,30 @@ import DarkModeIcon from '@mui/icons-material/DarkMode';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import { toHours } from 'utils';
+import _ from 'lodash';
 
 const CurrentHour = styled(FormLabel)({
-  color: '#5c92ff !important',
+  color: 'white !important',
   fontSize: 48,
   fontWeight: 'bold',
   display: 'flex',
 });
 
 const CurrentDate = styled(FormLabel)({
-  color: '#474f72 !important',
+  color: 'white !important',
   fontSize: 26,
   fontWeight: 'bold',
 });
 
 const CityName = styled(FormLabel)({
-  color: '#5c92ff !important',
+  color: 'white !important',
   fontSize: 28,
   fontWeight: 'bold',
   display: 'flex',
 });
 
 const SunInfo = styled(FormLabel)({
-  color: '#5c92ff !important',
+  color: 'white !important',
   fontSize: 14,
   fontWeight: 'bold',
 });
@@ -57,15 +58,18 @@ const AppCheckBoxs = styled(RadioGroup)({
 
 const AppRadio = styled(Radio)({
   color: 'white',
+  '&.Mui-checked': {
+    color: 'white',
+  },
 });
 
 const AppIcon = styled(Icon)({
   display: 'flex',
-  color: '#ffc077',
+  color: 'white',
 });
 
 const AppLabel = styled(FormLabel)({
-  color: '#474f72',
+  color: 'white',
   fontSize: 14,
 });
 
@@ -94,13 +98,21 @@ const Header: FC = () => {
           <CityName>
             <PlaceOutlinedIcon fontSize="large" style={{ display: 'flex' }} />
             {cityWeatherDetails &&
-              `${cityWeatherDetails?.city.name} - ${cityWeatherDetails?.city.country}`}
+              `${_.upperCase(cityWeatherDetails?.city.name)} - ${
+                cityWeatherDetails?.city.country
+              }`}
           </CityName>
         </Grid>
       </Grid>
       <Grid item md={2} container>
         <Grid item md={12} container>
-          <Grid item md={6} container justifyContent={'flex-start'}>
+          <Grid
+            item
+            md={6}
+            container
+            justifyContent={'center'}
+            alignItems={'center'}
+          >
             <SunInfo>
               <Box display={'flex'}>
                 <AppIcon>
@@ -110,11 +122,20 @@ const Header: FC = () => {
               </Box>
               <Box display={'flex'} ml={3}>
                 {cityWeatherDetails &&
-                  format(new Date(cityWeatherDetails.city.sunrise), 'HH:mm a')}
+                  format(
+                    new Date(cityWeatherDetails.city.sunrise * 1000),
+                    'HH:mm a'
+                  )}
               </Box>
             </SunInfo>
           </Grid>
-          <Grid item md={6} container justifyContent={'flex-start'}>
+          <Grid
+            item
+            md={6}
+            container
+            justifyContent={'center'}
+            alignItems={'center'}
+          >
             <SunInfo>
               <Box display={'flex'}>
                 <AppIcon>
@@ -124,13 +145,22 @@ const Header: FC = () => {
               </Box>
               <Box display={'flex'} ml={3}>
                 {cityWeatherDetails &&
-                  format(new Date(cityWeatherDetails.city.sunset), 'HH:mm a')}
+                  format(
+                    new Date(cityWeatherDetails.city.sunset * 1000),
+                    'HH:mm a'
+                  )}
               </Box>
             </SunInfo>
           </Grid>
         </Grid>
         <Grid item md={12} container>
-          <Grid item md={6} container justifyContent={'flex-start'}>
+          <Grid
+            item
+            md={6}
+            container
+            justifyContent={'center'}
+            alignItems={'center'}
+          >
             <SunInfo>
               <Box display={'flex'}>
                 <AppIcon>
@@ -144,7 +174,13 @@ const Header: FC = () => {
               </Box>
             </SunInfo>
           </Grid>
-          <Grid item md={6} container justifyContent={'flex-start'}>
+          <Grid
+            item
+            md={6}
+            container
+            justifyContent={'center'}
+            alignItems={'center'}
+          >
             <SunInfo>
               <Box display={'flex'}>
                 <AppIcon>

@@ -4,12 +4,41 @@ import {
   CircularProgress,
   Grid,
   TextField,
+  styled,
 } from '@mui/material';
 import { getGeoLocation, useAppSelector } from 'hooks';
 import { IGeoCoding } from 'interfaces/IGeoCoding';
 import { FC, Fragment, SyntheticEvent, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { retrieveSearchKeyWord } from 'store/weatherSlice';
+import { nanoid } from 'nanoid';
+
+const AppTextField = styled(TextField)`
+  & label {
+    color: white !important;
+  }
+  & label.Mui-focused {
+    color: white;
+  }
+  & .MuiOutlinedInput-root {
+    fieldset {
+      border-color: white;
+    }
+    input {
+      border-color: white;
+      color: white;
+    }
+    &:hover input {
+      border-color: white;
+    }
+    &.Mui-focused input {
+      border-color: white;
+    }
+    &.Mui-focused fieldset {
+      border-color: white;
+    }
+  }
+`;
 
 const SearchComponent: FC = () => {
   const dispatch = useDispatch();
@@ -51,6 +80,7 @@ const SearchComponent: FC = () => {
           component="li"
           sx={{ '& > img': { mr: 2, flexShrink: 0 } }}
           {...props}
+          key={nanoid()}
         >
           <img
             loading="lazy"
@@ -69,15 +99,17 @@ const SearchComponent: FC = () => {
       options={options}
       loading={loading}
       renderInput={(params) => (
-        <TextField
+        <AppTextField
+          variant={'outlined'}
           {...params}
+          sx={{ color: 'white', borderColor: 'white !important' }}
           label="Search by City..."
           InputProps={{
             ...params.InputProps,
             endAdornment: (
               <Fragment>
                 {loading ? (
-                  <CircularProgress color="inherit" size={20} />
+                  <CircularProgress style={{ color: 'white' }} size={20} />
                 ) : null}
                 {params.InputProps.endAdornment}
               </Fragment>

@@ -10,6 +10,7 @@ import { CardsFeed, SearchComponent, Header } from 'components/molecules';
 import { useAppSelector, useWeather } from 'hooks';
 import { IList } from 'interfaces/IWeatherDetails';
 import { FC, useEffect } from 'react';
+import { ChartCard } from 'components/molecules';
 
 const Home: FC = () => {
   const { selectedCity, unit } = useAppSelector(({ weather }) => weather);
@@ -47,7 +48,7 @@ const Home: FC = () => {
           </Grid>
           {/* Charts Component */}
           <Grid item md container justifyContent={'center'}>
-            <div>Charts Component</div>
+            <ChartCard cityWeatherDetails={cityWeatherDetails} />
           </Grid>
         </>
       )}

@@ -13,6 +13,7 @@ export interface IList {
   dt_txt: string;
   visibility: number;
   weather: IWeather[];
+  pop: number;
   main: {
     feels_like: number;
     grnd_level: number;

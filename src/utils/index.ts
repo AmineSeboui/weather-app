@@ -7,3 +7,4 @@ export {
   put,
 } from './fetch';
 export { toHours } from './numbers';
+export { _renderDateLabel } from './labels';

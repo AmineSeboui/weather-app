@@ -3,24 +3,21 @@ body {
   font-family: 'DM Sans';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  height: 100vh;
   background-image: linear-gradient(
     to right top,
-    #ffffff,
-    #fcfcff,
-    #f9f9ff,
-    #f5f7ff,
-    #f0f4ff,
-    #e9f0ff,
-    #e2ebfe,
-    #dae7fe,
-    #cfdffd,
-    #c3d7fc,
-    #b8cffa,
-    #adc7f9
+    #68aadc,
+    #5fa3dd,
+    #579cde,
+    #5295df,
+    #508ddf,
+    #4e88df,
+    #4c83de,
+    #4c7edd,
+    #487bdc,
+    #4377db,
+    #3f74d9,
+    #3a70d8
   );
 }
 

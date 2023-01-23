@@ -8,13 +8,15 @@ import ArrowBackIosNewRoundedIcon from '@mui/icons-material/ArrowBackIosNewRound
 import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRounded';
 
 const useStyles = makeStyles(() => ({
+  root: {
+    position: 'relative',
+  },
   content: {
     overflowX: 'scroll',
     overflowY: 'hidden',
     scrollBehavior: 'smooth',
     minWidth: '100%',
     paddingTop: '1.5rem',
-    position: 'relative',
     '&::-webkit-scrollbar': {
       display: 'none',
     },
@@ -24,18 +26,20 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     borderRadius: '50%',
     opacity: 1,
-    left: 0,
-    top: '60%',
+    right: '99%',
+    top: '50%',
     cursor: 'pointer',
+    color: 'white',
   },
   rightArrow: {
     position: 'absolute',
     display: 'flex',
     borderRadius: '50%',
     opacity: 1,
-    right: 0,
-    top: '60%',
+    left: '100%',
+    top: '50%',
     cursor: 'pointer',
+    color: 'white',
   },
 }));
 
@@ -57,7 +61,7 @@ const CardsFeed: FC<Props> = ({ cityWeatherDetails }: Props) => {
   };
 
   return (
-    <Grid container spacing={2} direction={'column'}>
+    <Grid container spacing={2} direction={'column'} className={classes.root}>
       <ArrowBackIosNewRoundedIcon
         fontSize="large"
         className={classes.leftArrow}

@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-useless-catch */
 
@@ -35,24 +34,24 @@ export const createUrl = (
 
 const makeRequest =
   (method: Method) =>
-    async <T = any>(
-      url: string,
-      body?: Record<string, unknown>,
-      options: Record<string, unknown> = {}
-    ): Promise<any> => {
-      try {
-        const { data } = await axios.request<T>({
-          data: body,
-          method,
-          url,
-          ...options,
-        });
+  async <T = any>(
+    url: string,
+    body?: Record<string, unknown>,
+    options: Record<string, unknown> = {}
+  ): Promise<any> => {
+    try {
+      const { data } = await axios.request<T>({
+        data: body,
+        method,
+        url,
+        ...options,
+      });
 
-        return data;
-      } catch (err: unknown) {
-        throw err;
-      }
-    };
+      return data;
+    } catch (err: unknown) {
+      throw err;
+    }
+  };
 
 export const get = makeRequest('get');
 
