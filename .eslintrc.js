@@ -10,6 +10,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
     'plugin:prettier/recommended',
+    'plugin:jest/all',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -19,7 +20,7 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  plugins: ['react', '@typescript-eslint', 'react-hooks', 'prettier'],
+  plugins: ['react', '@typescript-eslint', 'jest', 'testing-library', 'react-hooks', 'prettier'],
   rules: {
     // suppress errors for missing 'import React' in files
     'react/react-in-jsx-scope': 'off',
@@ -28,7 +29,6 @@ module.exports = {
       { extensions: ['.js', '.jsx', '.tsx', '.ts'] },
     ],
     'react/prop-types': 0,
-
     'prettier/prettier': 'error',
     quotes: ['warn', 'single'],
   },
@@ -38,7 +38,7 @@ module.exports = {
       extends: ['plugin:testing-library/react'],
     },
   ],
-  ignorePatterns: ['build', 'node-module', 'amplify'],
+  ignorePatterns: ['build', 'node-module'],
   settings: {
     react: {
       version: 'detect',
