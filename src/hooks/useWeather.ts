@@ -57,20 +57,6 @@ export const useWeather = () => {
       });
       const groupedList = _.values(_.groupBy(list, (item) => item.date));
 
-      /* const weatherDetailsPerDay = groupedList?.map((item) => {
-         console.log('item', item);
-        return {
-          ...item,
-          icon: item[0].weather[0].icon,
-          iconDescription: item[0].weather[0].description,
-          date: item[0].date,
-          avg_temp: item?.reduce(
-            (prev, curr, i, l) => prev + curr.main.temp / l.length,
-            0
-          ),
-        };
-      }); */
-
       return { ...data, groupedList: groupedList };
     },
   });

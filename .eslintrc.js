@@ -5,47 +5,47 @@ module.exports = {
     node: true,
   },
   extends: [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:react-hooks/recommended",
-    "plugin:prettier/recommended",
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:react-hooks/recommended',
+    'plugin:prettier/recommended',
   ],
-  parser: "@typescript-eslint/parser",
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
     },
     ecmaVersion: 12,
-    sourceType: "module",
+    sourceType: 'module',
   },
-  plugins: ["react", "@typescript-eslint", "react-hooks", "prettier"],
+  plugins: ['react', '@typescript-eslint', 'react-hooks', 'prettier'],
   rules: {
     // suppress errors for missing 'import React' in files
-    "react/react-in-jsx-scope": "off",
-    "react/jsx-filename-extension": [
+    'react/react-in-jsx-scope': 'off',
+    'react/jsx-filename-extension': [
       1,
-      { extensions: [".js", ".jsx", ".tsx", ".ts"] },
+      { extensions: ['.js', '.jsx', '.tsx', '.ts'] },
     ],
-    "react/prop-types": 0,
+    'react/prop-types': 0,
 
-    "prettier/prettier": "error",
-    quotes: ["warn", "single"],
+    'prettier/prettier': 'error',
+    quotes: ['warn', 'single'],
   },
   overrides: [
     {
-      files: ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"],
-      extends: ["plugin:testing-library/react"],
+      files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
+      extends: ['plugin:testing-library/react'],
     },
   ],
-  ignorePatterns: ["build", "node-module", "amplify"],
+  ignorePatterns: ['build', 'node-module', 'amplify'],
   settings: {
     react: {
-      version: "detect",
+      version: 'detect',
     },
-    "import/resolver": {
+    'import/resolver': {
       node: {
-        paths: ["src"],
+        paths: ['src'],
       },
     },
   },
